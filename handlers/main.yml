@@ -1,0 +1,14 @@
+---
+- name: reload systemd
+  systemd:
+    daemon_reload: yes
+
+- name: restart yanic
+  systemd:
+    name: yanic
+    state: restarted
+
+- name: restart respondd
+  systemd:
+    name: respondd
+    state: restarted

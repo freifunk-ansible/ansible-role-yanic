@@ -1,0 +1,20 @@
+---
+# workaround
+gopath: "{{ (ansible_env|default({})).GOPATH|default('/opt/go') }}"
+
+
+yanic_home: "/var/lib/yanic"
+yanic_bin_path: "{{ gopath }}/bin/yanic"
+yanic_git_root: "https://github.com/FreifunkBremen/yanic.git"
+yanic_version: master
+
+yanic_serve: false
+yanic_serve_user: "yanic"
+yanic_serve_config: "/etc/yanic.conf"
+
+yanic_respondd: false
+yanic_respondd_vpn: true
+yanic_respondd_listen_clientdev: "{{ yanic_respondd_batman }}"
+yanic_respondd_listen_meshdev: []
+yanic_respondd_config: "/etc/respondd.conf"
+

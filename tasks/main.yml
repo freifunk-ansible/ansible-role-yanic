@@ -1,0 +1,22 @@
+---
+- name: create source directory
+  file:
+    path: "{{ gopath }}/src/github.com/FreifunkBremen/yanic"
+    state: directory
+
+- name: clone repository
+  git:
+    repo: "{{ yanic_git_root }}"
+    dest: "{{ gopath }}/src/github.com/FreifunkBremen/yanic"
+    version: "{{ yanic_version }}"
+    force: true
+
+- name: fetch dependencies
+  shell: bash -lc 'cd {{ gopath }}/src/github.com/FreifunkBremen/yanic && dep ensure'
+
+- name: build binary
+  shell: bash -lc 'go install github.com/FreifunkBremen/yanic'
+
+- name: configure yanic as respondd daemon
+  include_tasks: respondd.yml
+  when: yanic_respondd
