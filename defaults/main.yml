@@ -12,8 +12,11 @@ yanic_serve: false
 yanic_serve_user: "yanic"
 yanic_serve_config: "/etc/yanic.conf"
 
+
 yanic_respondd: false
 yanic_respondd_vpn: true
+yanic_respondd_babel: false
+yanic_respondd_babel_socket: "[::1]:33123"
 yanic_respondd_listen_clientdev: "{{ yanic_respondd_batman }}"
 yanic_respondd_listen_meshdev: []
 yanic_respondd_config: "/etc/respondd.conf"
